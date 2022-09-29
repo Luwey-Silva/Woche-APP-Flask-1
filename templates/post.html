@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{% block name %} {{ post['name'] }} {% endblock %}</h2>
+    <span class="badge badge-primary">{{ post['created'] }}</span>
+    <hr>
+    <p><strong>Beschreibung:</strong></p>
+    <p>{{ post['user_beschreibung_montag'] }}</p>
+    <hr>
+    <p><strong>Stunden:</strong></p>
+    <p>{{ post['user_stunden_montag'] }}</p>
+    <hr>
+{% endblock %}

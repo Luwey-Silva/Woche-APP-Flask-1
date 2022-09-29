@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Bearbeitunh von "{{ post['name'] }}" {% endblock %}</h1>
+<hr>
+<form method="post">
+    <div class="form-group">
+        <label for="title">name</label>
+        <input type="text" name="title" placeholder="Hier eingeben"
+               class="form-control"
+               value="{{ request.form['name'] or post['name'] }}">
+        </input>
+    </div>
+
+    <div class="form-group">
+        <label for="content">Was würde am Montag gamacht?</label>
+        <textarea name="content" placeholder="Post content"
+                  class="form-control">{{ request.form['user_beschreibung_montag'] or post['user_beschreibung_montag'] }}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="content">Bitte Stunden eingeben:</label>
+        <textarea name="content" placeholder="Post content"
+                  class="form-control">{{ request.form['user_stunden_montag'] or post['user_stunden_montag'] }}</textarea>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Fertig</button>
+    </div>
+</form>
+<hr>
+
+<form action="{{ url_for('delete', id=post['id']) }}" method="POST">
+    <input type="submit" value="Eintrag Löschen"
+            class="btn btn-danger btn-sm"
+            onclick="return confirm('Bist Du sicher dass du diese Eintrag löschen willst?')">
+</form>
+
+{% endblock %}
